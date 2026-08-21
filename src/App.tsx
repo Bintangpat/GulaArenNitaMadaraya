@@ -1,78 +1,83 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
+// Helper function to resolve assets dynamically from src/assets/images
+const getAssetUrl = (path: string) => {
+  return new URL(`./assets/images/${path}`, import.meta.url).href;
+};
+
 // 1. Data Galeri
 const galleryData = [
   {
     title: "Pohon Aren Alami",
     desc: "Pohon aren (Arenga pinnata) tumbuh subur di lereng gunung Kuningan, Jawa Barat. Menjadi sumber utama nira berkualitas tinggi yang ramah lingkungan.",
-    imgSrc: "/src/assets/images/gallery/proses-1.png",
+    imgSrc: getAssetUrl("gallery/proses-1.webp"),
     alt: "Pohon aren tinggi menjulang di kebun"
   },
   {
     title: "Kebun Aren Tropis",
     desc: "Perkebunan aren dirawat secara alami oleh komunitas petani lokal di Desa Cibulan demi menjaga keberlanjutan ekosistem hutan tropis Jawa Barat.",
-    imgSrc: "/src/assets/images/gallery/proses-2.png",
+    imgSrc: getAssetUrl("gallery/proses-2.webp"),
     alt: "Kebun tropis tempat tumbuh pohon aren"
   },
   {
     title: "Cahaya Pagi Perkebunan",
     desc: "Pagi hari adalah waktu terbaik ketika embun pagi berselimut kabut menyelimuti perkebunan, waktu yang sangat ideal untuk proses penyadapan air nira.",
-    imgSrc: "/src/assets/images/gallery/proses-3.png",
+    imgSrc: getAssetUrl("gallery/proses-3.webp"),
     alt: "Cahaya pagi menyinari perkebunan"
   },
   {
     title: "Matahari Terbit di Atas Ladang",
     desc: "Para petani bersiap sejak fajar menyingsing untuk menaiki lereng-lereng gunung, memulai aktivitas penyadapan air nira kelapa murni.",
-    imgSrc: "/src/assets/images/gallery/proses-4.png",
+    imgSrc: getAssetUrl("gallery/proses-4.webp"),
     alt: "Matahari terbit di atas ladang"
   },
   {
     title: "Penyadapan Nira Aren",
     desc: "Petani menyadap air nira dari tongkol bunga jantan pohon aren secara teliti. Setiap tetesnya adalah berkah berharga dari alam.",
-    imgSrc: "/src/assets/images/gallery/proses-5.png",
+    imgSrc: getAssetUrl("gallery/proses-5.webp"),
     alt: "Petani menyadap nira dari pohon aren"
   },
   {
     title: "Bumbung Penampung",
     desc: "Air nira segar mengalir dan ditampung dalam bumbung bambu tradisional (lodong) yang bersih, menjaga kesegaran nira alami tanpa terkontaminasi.",
-    imgSrc: "/src/assets/images/gallery/proses-6.png",
+    imgSrc: getAssetUrl("gallery/proses-6.webp"),
     alt: "Bumbung bambu penampung air nira"
   },
   {
     title: "Petani Aren Caping Tradisional",
     desc: "Mengenakan caping anyaman tradisional, petani kita menembus medan perkebunan aren yang berbukit demi merawat kebun warisan keluarga.",
-    imgSrc: "/src/assets/images/gallery/proses-7.png",
+    imgSrc: getAssetUrl("gallery/proses-7.webp"),
     alt: "Petani aren dengan caping tradisional"
   },
   {
     title: "Senyum Petani Gula",
     desc: "Senyuman dan kebanggaan petani aren lokal dalam menghasilkan produk lokal bernilai gizi tinggi bagi kesehatan keluarga Indonesia.",
-    imgSrc: "/src/assets/images/gallery/proses-8.png",
+    imgSrc: getAssetUrl("gallery/proses-8.webp"),
     alt: "Potret petani aren tersenyum"
   },
   {
     title: "Nira Emas Segar",
     desc: "Nira segar berwarna kuning keemasan yang baru disadap dari pohon aren. Memiliki rasa manis alami dan segar khas pegunungan.",
-    imgSrc: "/src/assets/images/gallery/proses-9.png",
+    imgSrc: getAssetUrl("gallery/proses-9.webp"),
     alt: "Nira segar berwarna kuning keemasan"
   },
   {
     title: "Memasak di Tungku Tradisional",
     desc: "Air nira disaring lalu dimasak perlahan di atas tungku kayu bakar tradisional selama berjam-jam hingga mengental dan terkaramelisasi dengan sempurna.",
-    imgSrc: "/src/assets/images/gallery/proses-10.png",
+    imgSrc: getAssetUrl("gallery/proses-10.webp"),
     alt: "Proses memasak nira di atas tungku kayu bakar"
   },
   {
     title: "Cetakan Bambu Alami",
     desc: "Setelah matang, gula aren cair kental dituangkan ke cetakan bambu tradisional yang dibasahi air agar mudah dilepas saat dingin.",
-    imgSrc: "/src/assets/images/gallery/proses-11.png",
+    imgSrc: getAssetUrl("gallery/proses-11.webp"),
     alt: "Cetakan gula aren dari bambu"
   },
   {
     title: "Gula Aren Siap Kemas",
     desc: "Gula aren cetak yang telah padat, dingin, dan dilepas dari cetakan, kini siap dikemas secara higienis untuk menjaga kesegarannya.",
-    imgSrc: "/src/assets/images/gallery/proses-12.png",
+    imgSrc: getAssetUrl("gallery/proses-12.webp"),
     alt: "Gula aren cetak siap dikemas"
   }
 ];
@@ -93,7 +98,7 @@ const productData: Product[] = [
   {
     name: "Gula Aren Cetak",
     price: "Rp 28.000 / 500g",
-    imgSrc: "/src/assets/images/produk/gula-cetak.png",
+    imgSrc: getAssetUrl("produk/gula-cetak.webp"),
     desc: "Dicetak tradisional menggunakan batok kelapa pilihan, menghasilkan gula aren padat dengan rasa karamel alami yang pekat. Sangat pas untuk pemanis kolak, bubur sumsum, kuah cuko pempek, hingga racikan kopi hitam tradisional.",
     tag: "Terlaris",
     tagBg: "bg-[var(--brand)]",
@@ -105,12 +110,12 @@ const productData: Product[] = [
       "Kalium": "350mg",
       "Indeks Glikemik": "35 (Rendah)"
     },
-    recipe: "Sisir atau parut halus gula aren cetak, lalu rebus bersama air dan seikat daun pandan hingga larut dan mengental. Saring sirup gula aren, kemudian campurkan ke dalam santan hangat atau seduhan kopi susu Anda untuk aroma karamel khas yang legit."
+    recipe: "Sisir or parut halus gula aren cetak, lalu rebus bersama air dan seikat daun pandan hingga larut dan mengental. Saring sirup gula aren, kemudian campurkan ke dalam santan hangat atau seduhan kopi susu Anda untuk aroma karamel khas yang legit."
   },
   {
     name: "Gula Aren Serbuk",
     price: "Rp 32.000 / 500g",
-    imgSrc: "/src/assets/images/produk/gula-serbuk.png",
+    imgSrc: getAssetUrl("produk/gula-serbuk.webp"),
     desc: "Gula aren versi bubuk (crystal/semut) dengan tingkat kekeringan tinggi (kadar air < 2%). Mudah larut, beraroma harum aren terpanggang yang khas, dan sangat praktis untuk taburan kopi, pembuat kue, pancake, serta aneka dessert kekinian.",
     tag: "Praktis",
     tagBg: "bg-[var(--teal)]",
@@ -127,7 +132,7 @@ const productData: Product[] = [
   {
     name: "Nira Aren Cair",
     price: "Rp 35.000 / 350ml",
-    imgSrc: "/src/assets/images/produk/nira-cair.png",
+    imgSrc: getAssetUrl("produk/nira-cair.webp"),
     desc: "Sirup nira murni hasil penyusutan air nira kelapa secara perlahan di atas tungku tanpa proses cetak atau kristalisasi. Memiliki kekentalan mirip madu dengan aroma karamel legit serta sedikit rasa asam segar khas buah tropis. Dikemas steril dalam botol kaca.",
     tag: "Premium",
     tagBg: "bg-amber-500",
@@ -148,19 +153,19 @@ const testimonialData = [
   {
     name: "Rina Andriani",
     location: "Bandung",
-    imgSrc: "/src/assets/images/testimoni/user-rina.png",
+    imgSrc: getAssetUrl("testimoni/user-rina.webp"),
     text: "Rasa gulanya beda banget sama yang di pasaran, lebih legit dan aromanya kuat. Sekarang langganan tiap bulan buat bikin kolak."
   },
   {
     name: "Dedi Kurniawan",
     location: "Yogyakarta",
-    imgSrc: "/src/assets/images/testimoni/user-dedi.png",
+    imgSrc: getAssetUrl("testimoni/user-dedi.webp"),
     text: "Sebagai pemilik kedai kopi, kualitas gula aren ini konsisten dan enggak terlalu manis berlebihan. Pelanggan saya suka."
   },
   {
     name: "Sari Wulandari",
     location: "Jakarta",
-    imgSrc: "/src/assets/images/testimoni/user-sari.png",
+    imgSrc: getAssetUrl("testimoni/user-sari.webp"),
     text: "Senang bisa beli langsung dari petani, tahu ceritanya dari mana asal gula ini. Kemasannya juga rapi dan higienis."
   }
 ];
@@ -501,7 +506,7 @@ function App() {
         {/* Full-height Hero Container */}
         <div className="relative h-screen overflow-hidden">
           <img
-            src="/src/assets/images/hero-bg.png"
+            src={getAssetUrl("hero-bg.webp")}
             alt="Kebun aren di pagi hari dengan kabut"
             className="w-full h-[120%] object-cover absolute top-0 left-0 transition-transform duration-75 ease-out scale-105"
             style={{ transform: getParallaxTranslateY(-0.15) }}
@@ -546,7 +551,7 @@ function App() {
         {/* Banner with Parallax background but no torn papers */}
         <div className="relative min-h-[60vh] flex items-center overflow-hidden">
           <img
-            src="/src/assets/images/banner-bg.png"
+            src={getAssetUrl("banner-bg.webp")}
             alt="Ladang perkebunan tempat petani aren bekerja"
             className="absolute inset-0 w-full h-[120%] object-cover absolute top-0 left-0 transition-transform duration-75 ease-out scale-105"
             style={{ transform: getParallaxTranslateY(-0.12, 1000) }} // Estimated vertical offset
