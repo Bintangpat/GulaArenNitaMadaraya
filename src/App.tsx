@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
+// Glob import all images inside src/assets/images recursively
+const imageModules = import.meta.glob('./assets/images/**/*.{png,jpg,jpeg,svg,webp}', {
+  eager: true,
+  import: 'default'
+}) as Record<string, string>;
+
 // Helper function to resolve assets dynamically from src/assets/images
 const getAssetUrl = (path: string) => {
-  return new URL(`./assets/images/${path}`, import.meta.url).href;
+  const key = `./assets/images/${path}`;
+  return imageModules[key] || '';
 };
 
 // 1. Data Galeri
