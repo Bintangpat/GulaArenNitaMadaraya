@@ -219,7 +219,7 @@ function App() {
       setShowBackToTop(currentScroll > 500);
 
       // Scrollspy logic
-      const sections = ['beranda', 'tentang', 'produk', 'testimoni', 'kontak'];
+      const sections = ['beranda', 'tentang', 'produk', 'testimoni', 'lokasi', 'kontak'];
       let currentSec = 'beranda';
       for (const section of sections) {
         const el = document.getElementById(section);
@@ -386,12 +386,27 @@ function App() {
         <div className="max-w-7xl mx-auto px-5 py-2 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span>📍</span>
-            <span>Desa Cibulan, Kuningan — Jawa Barat</span>
+            <a 
+              href="https://maps.app.goo.gl/WapxEJfTS6XNyDDN8" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:text-[var(--brand)] transition flex items-center gap-1"
+            >
+              <span>Lokasi Rumah Produksi:</span>
+              <span className="font-semibold underline decoration-dotted">Gula Aren Nita (Buka Peta)</span>
+            </a>
           </div>
           <div className="flex items-center gap-4">
             <a href="#" className="hover:text-[var(--brand)] transition">Facebook</a>
             <a href="#" className="hover:text-[var(--brand)] transition">Instagram</a>
-            <a href="#" className="hover:text-[var(--brand)] transition">WhatsApp</a>
+            <a 
+              href="https://wa.me/6287883030485" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:text-[var(--brand)] transition flex items-center gap-1 font-semibold"
+            >
+              <span>💬 WA: 0878-8303-0485</span>
+            </a>
           </div>
         </div>
       </div>
@@ -442,16 +457,23 @@ function App() {
               Testimoni
             </a>
             <a
-              href="#kontak"
+              href="#lokasi"
               className={`nav-link hover:text-[var(--brand)] transition py-2 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[var(--brand)] after:transition-all hover:after:w-full ${
-                activeSection === 'kontak' ? 'active-link' : ''
+                activeSection === 'lokasi' ? 'active-link' : ''
               }`}
             >
-              Hubungi Kami
+              Lokasi & Kontak
             </a>
           </nav>
           <div className="flex items-center gap-4">
-            <a href="#kontak" className="cta-pill text-white text-sm font-semibold px-6 py-2.5 rounded-full hidden sm:inline-block">Pesan Sekarang</a>
+            <a 
+              href="https://wa.me/6287883030485?text=Halo%20Gula%20Aren%20Nita%2C%20saya%20tertarik%20untuk%20memesan%20produk%20gula%20aren."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cta-pill text-white text-sm font-semibold px-6 py-2.5 rounded-full hidden sm:inline-block"
+            >
+              Pesan Sekarang
+            </a>
             {/* Hamburger Button */}
             <button
               id="mobile-menu-btn"
@@ -502,9 +524,17 @@ function App() {
             <a href="#tentang" className="mobile-nav-link hover:text-[var(--brand)] transition py-2 border-b border-gray-50" onClick={() => setIsMobileMenuOpen(false)}>Tentang Kami</a>
             <a href="#produk" className="mobile-nav-link hover:text-[var(--brand)] transition py-2 border-b border-gray-50" onClick={() => setIsMobileMenuOpen(false)}>Produk</a>
             <a href="#testimoni" className="mobile-nav-link hover:text-[var(--brand)] transition py-2 border-b border-gray-50" onClick={() => setIsMobileMenuOpen(false)}>Testimoni</a>
-            <a href="#kontak" className="mobile-nav-link hover:text-[var(--brand)] transition py-2 border-b border-gray-50" onClick={() => setIsMobileMenuOpen(false)}>Hubungi Kami</a>
+            <a href="#lokasi" className="mobile-nav-link hover:text-[var(--brand)] transition py-2 border-b border-gray-50" onClick={() => setIsMobileMenuOpen(false)}>Lokasi & Kontak</a>
           </nav>
-          <a href="#kontak" className="cta-pill text-white text-center text-sm font-semibold px-6 py-2.5 rounded-full mt-auto mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Pesan Sekarang</a>
+          <a 
+            href="https://wa.me/6287883030485?text=Halo%20Gula%20Aren%20Nita%2C%20saya%20tertarik%20untuk%20memesan%20produk%20gula%20aren." 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cta-pill text-white text-center text-sm font-semibold px-6 py-2.5 rounded-full mt-auto mobile-nav-link" 
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Pesan Sekarang
+          </a>
         </div>
       </div>
 
@@ -683,6 +713,118 @@ function App() {
         </div>
       </section>
 
+      {/* ============ LOKASI & KONTAK VIA WHATSAPP ============ */}
+      <section id="lokasi" className="max-w-6xl mx-auto px-5 py-20">
+        <div className="text-center mb-12 reveal">
+          <span className="text-[var(--brand-dark)] text-xs font-bold uppercase tracking-widest">Lokasi & Kontak</span>
+          <h2 className="text-2xl md:text-3xl font-extrabold mt-2 text-[var(--teal)]">Kunjungi Kami & Pesan Langsung</h2>
+          <p className="text-gray-500 text-sm mt-3 max-w-xl mx-auto">
+            Temukan lokasi rumah produksi Gula Aren Nita di peta atau hubungi kami langsung melalui WhatsApp untuk pemesanan cepat dan konsultasi produk.
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-12 gap-8 items-stretch reveal">
+          {/* Kolom Informasi & Kontak WhatsApp */}
+          <div className="lg:col-span-5 flex flex-col gap-5">
+            {/* Card 1: Rumah Produksi */}
+            <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style={{ background: '#ECFDF5', color: 'var(--brand-dark)' }}>
+                  📍
+                </div>
+                <div>
+                  <h3 className="font-extrabold text-lg text-[var(--teal)]">Rumah Produksi Gula Aren Nita</h3>
+                  <p className="text-gray-600 text-sm mt-1 leading-relaxed">
+                    Pusat pembuatan dan pengolahan nira aren asli berkualitas tinggi. Siap melayani pembelian langsung di tempat.
+                  </p>
+                  <div className="mt-4 pt-4 border-t border-gray-100 space-y-2 text-xs text-gray-500">
+                    <div className="flex items-center gap-2">
+                      <span className="font-semibold text-gray-700">🕒 Jam Operasional:</span>
+                      <span>Setiap Hari (08.00 - 17.00 WIB)</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="font-semibold text-gray-700">📦 Layanan:</span>
+                      <span>Melayani pesanan eceran, reseller & partai besar</span>
+                    </div>
+                  </div>
+                  <a
+                    href="https://maps.app.goo.gl/WapxEJfTS6XNyDDN8"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-xs font-bold text-[var(--brand-dark)] hover:text-[var(--brand)] mt-4 group"
+                  >
+                    <span>Buka Rute di Google Maps</span>
+                    <span className="transition-transform group-hover:translate-x-1">→</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 2: Hubungi WhatsApp */}
+            <div className="rounded-2xl p-6 text-white shadow-md flex-1 flex flex-col justify-between" style={{ background: 'linear-gradient(135deg, #0F373A 0%, #164E4D 100%)' }}>
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="inline-flex items-center gap-1.5 bg-green-500/20 text-green-300 text-xs font-bold px-3 py-1 rounded-full border border-green-500/30">
+                    <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+                    Fast Response
+                  </span>
+                  <span className="text-2xl">💬</span>
+                </div>
+                <h3 className="font-extrabold text-xl text-white">Pesan Cepat via WhatsApp</h3>
+                <p className="text-white/80 text-sm mt-2 leading-relaxed">
+                  Konsultasikan kebutuhan produk Anda langsung dengan kami. Kami siap memberikan penawaran terbaik dan info ketersediaan stok terbaru.
+                </p>
+                <div className="mt-4 bg-white/10 rounded-xl p-3.5 backdrop-blur-sm border border-white/10">
+                  <span className="text-xs text-white/70 block">Nomor WhatsApp Resmi:</span>
+                  <span className="text-lg font-extrabold text-[var(--brand)] tracking-wide">0878-8303-0485</span>
+                </div>
+              </div>
+
+              <a
+                href="https://wa.me/6287883030485?text=Halo%20Gula%20Aren%20Nita%2C%20saya%20tertarik%20untuk%20memesan%20produk%20gula%20aren."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 w-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-sm py-3.5 px-6 rounded-full flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+              >
+                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+                </svg>
+                <span>Chat via WhatsApp (0878-8303-0485)</span>
+              </a>
+            </div>
+          </div>
+
+          {/* Kolom Peta Google Maps */}
+          <div className="lg:col-span-7 flex flex-col">
+            <div className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-lg flex-1 min-h-[420px] lg:min-h-[500px] relative flex flex-col">
+              <div className="bg-gray-50 border-b border-gray-100 px-5 py-3 flex items-center justify-between text-xs text-gray-500">
+                <span className="flex items-center gap-2 font-medium">
+                  <span className="w-2.5 h-2.5 rounded-full bg-red-500"></span>
+                  Peta Lokasi Google Maps
+                </span>
+                <a
+                  href="https://maps.app.goo.gl/WapxEJfTS6XNyDDN8"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[var(--brand-dark)] font-bold hover:underline"
+                >
+                  Buka Peta Penuh ↗
+                </a>
+              </div>
+              <iframe
+                title="Peta Lokasi Gula Aren Nita"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1986.4345501706395!2d104.8588719!3d-5.2829736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e4737003836780f%3A0xa62a90f4a43746f9!2sGula%20Aren%20Nita!5e0!3m2!1sid!2sid!4v1710000000000!5m2!1sid!2sid"
+                className="w-full flex-1 border-0"
+                style={{ minHeight: '380px' }}
+                allowFullScreen={false}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ============ FOOTER ============ */}
       <footer id="kontak" className="text-white" style={{ background: 'var(--teal)' }}>
         <div className="max-w-6xl mx-auto px-5 py-10 flex flex-col md:flex-row items-center justify-between gap-6 border-b border-white/10">
@@ -723,7 +865,7 @@ function App() {
               <span className="w-7 h-7 rounded-full flex items-center justify-center text-sm" style={{ background: 'var(--brand)' }}>🌴</span>
               Gula Aren Nita
             </a>
-            <p className="text-white/60 text-sm leading-relaxed">Gula aren asli homemade, disadap dan diolah langsung oleh petani lokal di lereng gunung Kuningan, Jawa Barat.</p>
+            <p className="text-white/60 text-sm leading-relaxed">Gula aren asli homemade, disadap dan diolah langsung oleh petani lokal di lereng gunung dengan kualitas murni tanpa pengawet.</p>
           </div>
           <div>
             <h4 className="text-[var(--brand)] font-bold text-sm mb-4">Tautan Cepat</h4>
@@ -731,7 +873,7 @@ function App() {
               <li><a href="#tentang" className="hover:text-white transition">Tentang Kami</a></li>
               <li><a href="#produk" className="hover:text-white transition">Produk</a></li>
               <li><a href="#testimoni" className="hover:text-white transition">Testimoni</a></li>
-              <li><a href="#" className="hover:text-white transition">Cara Pemesanan</a></li>
+              <li><a href="#lokasi" className="hover:text-white transition">Lokasi & Kontak</a></li>
             </ul>
           </div>
           <div>
@@ -739,16 +881,43 @@ function App() {
             <ul className="space-y-2 text-sm text-white/70">
               <li><a href="#" className="hover:text-white transition">Facebook</a></li>
               <li><a href="#" className="hover:text-white transition">Instagram</a></li>
-              <li><a href="#" className="hover:text-white transition">WhatsApp</a></li>
+              <li>
+                <a 
+                  href="https://wa.me/6287883030485" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="hover:text-white transition text-[var(--brand)] font-medium"
+                >
+                  WhatsApp (0878-8303-0485)
+                </a>
+              </li>
               <li><a href="#" className="hover:text-white transition">TikTok</a></li>
             </ul>
           </div>
           <div>
             <h4 className="text-[var(--brand)] font-bold text-sm mb-4">Kantor Kami</h4>
             <ul className="space-y-2 text-sm text-white/70">
-              <li>Desa Cibulan, Kuningan, Jawa Barat</li>
-              <li>halo@niraasli.id</li>
-              <li>(0812) 3456-7890</li>
+              <li>
+                <a 
+                  href="https://maps.app.goo.gl/WapxEJfTS6XNyDDN8" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="hover:underline text-white/90 font-medium"
+                >
+                  Gula Aren Nita (Buka di Google Maps)
+                </a>
+              </li>
+              <li>halo@gulaarennita.com</li>
+              <li>
+                <a 
+                  href="https://wa.me/6287883030485" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="hover:underline"
+                >
+                  (0878) 8303-0485
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -850,7 +1019,7 @@ function App() {
                       <span className="text-[var(--brand-dark)] font-extrabold text-lg">{activeProduct.price}</span>
                     </div>
                     <a
-                      href={`https://wa.me/6281234567890?text=${encodeURIComponent(
+                      href={`https://wa.me/6287883030485?text=${encodeURIComponent(
                         `Halo Gula Aren Nita, saya ingin memesan produk [${activeProduct.name}] seharga ${activeProduct.price.split('/')[0].trim()}. Mohon informasi ketersediaan stock, cara pengiriman, dan biaya total ke alamat saya.`
                       )}`}
                       target="_blank"
